@@ -14,7 +14,8 @@ def normalize_phone(raw: str) -> str:
     if not raw:
         return ""
 
-    digits = re.sub(r"\D", "", raw)
+    raw_str = str(raw)
+    digits = re.sub(r"\D", "", raw_str)
 
     if digits.startswith("91") and len(digits) == 12:
         return digits
@@ -45,8 +46,8 @@ def deduplicate_leads(leads: list[dict]) -> list[dict]:
     unique = []
     for lead in leads:
         key = (
-            lead.get("phone", "").strip(),
-            lead.get("name", "").strip().lower(),
+            str(lead.get("phone") or "").strip(),
+            str(lead.get("name") or "").strip().lower(),
         )
         if key == ("", ""):
             unique.append(lead)

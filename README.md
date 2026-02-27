@@ -75,7 +75,7 @@ python main.py --api-key abc123 --max-leads 30 --output my_leads.xlsx
 └─────────────┘     └──────────────┘     └───────────┘
        │                                       │
   12 categories                          HOT / WARM / COLD
-  5km → auto 10km                              │
+  50km → auto 100km                              │
                                                ▼
                                     ┌──────────────────┐
                                     │  WhatsApp Msgs   │
