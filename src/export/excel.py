@@ -1,5 +1,6 @@
 """Excel export with 4 formatted sheets using openpyxl."""
 
+from collections import Counter
 from datetime import date
 
 from openpyxl import Workbook
@@ -248,7 +249,6 @@ def _create_summary_sheet(wb: Workbook, businesses: list[dict], location: str):
     wa_ready = sum(1 for b in businesses if b.get("wa_link", "").startswith("https://"))
     missing_phone = sum(1 for b in businesses if b.get("wa_link") == "PHONE MISSING")
 
-    from collections import Counter
     cat_counts = Counter(b.get("category_label", "") for b in businesses)
     top_3_cats = [cat for cat, _ in cat_counts.most_common(3)]
 

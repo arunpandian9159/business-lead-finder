@@ -1,7 +1,8 @@
 """Geoapify Places API integration for business discovery."""
 
 import httpx
-from config import (
+
+from src.config import (
     CATEGORIES,
     DEFAULT_LAT,
     DEFAULT_LON,
@@ -10,7 +11,7 @@ from config import (
     MAX_LEADS,
     MIN_RESULTS_BEFORE_EXPAND,
 )
-from utils import is_chain_or_franchise
+from src.utils import is_chain_or_franchise
 
 GEOAPIFY_BASE = "https://api.geoapify.com/v2/places"
 

@@ -1,25 +1,36 @@
 """Configuration and constants for the Lead Finder tool."""
 
-# ═══════════════════════════════════════════
-# USER DETAILS
-# ═══════════════════════════════════════════
-USER_NAME = "Arunpandian"
-USER_PHONE = "918072396488"
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 # ═══════════════════════════════════════════
-# LOCATION
+# USER DETAILS (from .env)
 # ═══════════════════════════════════════════
-DEFAULT_LOCATION = "Puducherry"
-DEFAULT_LAT = 11.9416
-DEFAULT_LON = 79.8083
-DEFAULT_RADIUS_KM = 50
+USER_NAME = os.getenv("USER_NAME", "Arunpandian")
+USER_PHONE = os.getenv("USER_PHONE", "918072396488")
+
+# ═══════════════════════════════════════════
+# API KEY (from .env)
+# ═══════════════════════════════════════════
+GEOAPIFY_API_KEY = os.getenv("GEOAPIFY_API_KEY", "")
+
+# ═══════════════════════════════════════════
+# LOCATION (from .env)
+# ═══════════════════════════════════════════
+DEFAULT_LOCATION = os.getenv("DEFAULT_LOCATION", "Puducherry")
+DEFAULT_LAT = float(os.getenv("DEFAULT_LAT", "11.9416"))
+DEFAULT_LON = float(os.getenv("DEFAULT_LON", "79.8083"))
+DEFAULT_RADIUS_KM = int(os.getenv("DEFAULT_RADIUS_KM", "50"))
 EXPANDED_RADIUS_KM = 100
 MIN_RESULTS_BEFORE_EXPAND = 20
 MAX_LEADS = 100
 
 # ═══════════════════════════════════════════
 # GEOAPIFY CATEGORIES
-# Maps our business types to Geoapify place categories
 # Ref: https://apidocs.geoapify.com/docs/places/#categories
 # ═══════════════════════════════════════════
 CATEGORIES = {
@@ -90,11 +101,10 @@ CATEGORIES = {
 # ═══════════════════════════════════════════
 SCORE_NO_WEBSITE = 4
 SCORE_UNCLAIMED = 2
-SCORE_FEW_REVIEWS = 1  # fewer than 20
+SCORE_FEW_REVIEWS = 1
 SCORE_NO_SOCIAL = 2
 SCORE_HIGH_REVENUE = 1
 REVIEW_THRESHOLD = 20
 
-# Lead status thresholds
 HOT_MIN = 8
 WARM_MIN = 5

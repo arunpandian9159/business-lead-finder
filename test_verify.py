@@ -1,8 +1,8 @@
 """Quick verification test for the lead finder pipeline."""
 
-from messages import generate_messages
-from scoring import calculate_score, get_lead_status
-from excel_export import export_to_excel
+from src.messaging import generate_messages
+from src.scoring import calculate_score, get_lead_status
+from src.export import export_to_excel
 
 # Test 1: Message generation
 biz1 = {

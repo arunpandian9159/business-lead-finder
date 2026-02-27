@@ -1,6 +1,6 @@
 """Priority scoring and lead status classification."""
 
-from config import (
+from src.config import (
     HOT_MIN,
     REVIEW_THRESHOLD,
     SCORE_FEW_REVIEWS,

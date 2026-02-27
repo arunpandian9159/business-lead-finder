@@ -1,7 +1,7 @@
 """WhatsApp message templates and generator for each business category."""
 
-from config import USER_NAME
-from utils import build_wa_link, normalize_phone
+from src.config import USER_NAME
+from src.utils import build_wa_link, normalize_phone
 
 # ═══════════════════════════════════════════
 # MESSAGE TEMPLATES — keyed by category

@@ -110,7 +110,7 @@ def _scrape_google_search(name: str, locality: str, category: str) -> dict:
         soup = BeautifulSoup(html, "lxml")
         text = soup.get_text(" ", strip=True)
 
-        rating_match = re.search(r"(\d\.?\d?)\s*(?:out of 5|/5|\u2605)", text)
+        rating_match = re.search(r"(\d\.?\d?)\s*(?:out of 5|/5|★)", text)
         if rating_match:
             result["rating"] = rating_match.group(1)
 

@@ -1,22 +1,30 @@
 """Lead Finder + WhatsApp Outreach — CLI Entry Point.
 
 Usage:
+    python main.py
     python main.py --api-key YOUR_GEOAPIFY_KEY
-    python main.py --api-key KEY --location "Puducherry" --radius 5 --max-leads 50
-    python main.py --api-key KEY --skip-enrichment   # Skip Google scraping (faster)
+    python main.py --location "Puducherry" --radius 5 --max-leads 50
+    python main.py --skip-enrichment
 """
 
 import argparse
 import sys
 from datetime import date
 
-from config import DEFAULT_LAT, DEFAULT_LOCATION, DEFAULT_LON, DEFAULT_RADIUS_KM, MAX_LEADS
-from discovery import search_businesses
-from enrichment import enrich_all
-from excel_export import export_to_excel
-from messages import generate_all
-from scoring import score_all
-from utils import deduplicate_leads
+from src.config import (
+    DEFAULT_LAT,
+    DEFAULT_LOCATION,
+    DEFAULT_LON,
+    DEFAULT_RADIUS_KM,
+    GEOAPIFY_API_KEY,
+    MAX_LEADS,
+)
+from src.discovery import search_businesses
+from src.enrichment import enrich_all
+from src.export import export_to_excel
+from src.messaging import generate_all
+from src.scoring import score_all
+from src.utils import deduplicate_leads
 
 
 def main():
@@ -24,7 +32,7 @@ def main():
         description="🔍 Lead Finder + WhatsApp Outreach Generator",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument("--api-key", required=True, help="Geoapify API key")
+    parser.add_argument("--api-key", default=None, help="Geoapify API key (defaults to .env)")
     parser.add_argument("--location", default=DEFAULT_LOCATION, help="Search location name")
     parser.add_argument("--lat", type=float, default=DEFAULT_LAT, help="Latitude")
     parser.add_argument("--lon", type=float, default=DEFAULT_LON, help="Longitude")
@@ -34,6 +42,11 @@ def main():
     parser.add_argument("--output", default=None, help="Output filename (auto-generated if not set)")
 
     args = parser.parse_args()
+
+    api_key = args.api_key or GEOAPIFY_API_KEY
+    if not api_key:
+        print("❌ No API key provided. Set GEOAPIFY_API_KEY in .env or pass --api-key.")
+        sys.exit(1)
 
     print("=" * 60)
     print("  🔍 LEAD FINDER + WHATSAPP OUTREACH GENERATOR")
@@ -45,7 +58,7 @@ def main():
 
     # Phase 1: Discovery
     businesses = search_businesses(
-        api_key=args.api_key,
+        api_key=api_key,
         lat=args.lat,
         lon=args.lon,
         radius_km=args.radius,
