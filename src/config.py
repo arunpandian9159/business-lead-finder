@@ -19,7 +19,7 @@ USER_PHONE = os.getenv("USER_PHONE", "918072396488")
 GEOAPIFY_API_KEY = os.getenv("GEOAPIFY_API_KEY", "")
 
 # ═══════════════════════════════════════════
-# LOCATION (from .env)
+# LOCATION (from .env) 
 # ═══════════════════════════════════════════
 DEFAULT_LOCATION = os.getenv("DEFAULT_LOCATION", "Puducherry")
 DEFAULT_LAT = float(os.getenv("DEFAULT_LAT", "11.9416"))
