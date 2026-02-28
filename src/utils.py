@@ -8,7 +8,7 @@ def normalize_phone(raw: str) -> str:
     """Normalize an Indian phone number to 91XXXXXXXXXX format.
 
     Handles formats like:
-      +91 80723 96488, 091-8072396488, 8072396488, 08072396488
+      +91 80723 96488, 091-8072396488, 8072396488, 08072396488 
     Returns empty string if phone can't be normalized.
     """
     if not raw:
