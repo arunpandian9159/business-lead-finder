@@ -12,7 +12,7 @@ import sys
 from datetime import date
 
 from src.config import (
-    DEFAULT_LAT,
+    DEFAULT_LAT, 
     DEFAULT_LOCATION,
     DEFAULT_LON,
     DEFAULT_RADIUS_KM,
