@@ -218,7 +218,7 @@ lead-finder/
 | `PHONE MISSING in Excel` | Business has no phone on Geoapify. These rows are highlighted orange.          |
 
 ---
-
+ 
 ## License
 
 MIT
