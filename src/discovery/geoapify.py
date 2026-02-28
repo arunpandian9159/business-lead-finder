@@ -8,7 +8,7 @@ from src.config import (
     DEFAULT_LON,
     DEFAULT_RADIUS_KM,
     EXPANDED_RADIUS_KM,
-    MAX_LEADS,
+    MAX_LEADS, 
     MIN_RESULTS_BEFORE_EXPAND,
 )
 from src.utils import is_chain_or_franchise
