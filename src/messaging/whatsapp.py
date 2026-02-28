@@ -168,7 +168,7 @@ Happy to show you a free sample demo! 📸
 def generate_messages(business: dict) -> dict:
     """Generate short message, full message, and wa.me link for a business.
 
-    Returns the business dict with added keys:
+    Returns the business dict with added keys: 
       wa_short, wa_full, wa_link
     """
     category = business.get("category", "")
