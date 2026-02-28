@@ -7,7 +7,7 @@ from src.config import (
     SCORE_HIGH_REVENUE,
     SCORE_NO_SOCIAL,
     SCORE_NO_WEBSITE,
-    SCORE_UNCLAIMED,
+    SCORE_UNCLAIMED, 
     WARM_MIN,
 )
 
